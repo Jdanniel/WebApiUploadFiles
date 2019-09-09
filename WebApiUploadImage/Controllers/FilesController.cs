@@ -18,6 +18,7 @@ namespace WebApiUpload.Controllers
         private ELAVONTESTContext context_ = new ELAVONTESTContext();
         private readonly IConfiguration configuracion;
         private readonly string appname;
+        private readonly Random random = new Random();
 
         public FilesController(IConfiguration iconfig)
         {
@@ -46,7 +47,7 @@ namespace WebApiUpload.Controllers
                 {
                     FileInfo fi = new FileInfo(archivo.FileName);
 
-                    string newName = "_" + dia + mesm + anno + "_" + idar + fi.Extension;
+                    string newName = "_" + dia + mesm + anno + RandomString(6) + "_" + idar + fi.Extension;
 
                     if (!Directory.Exists("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno))
                     {
@@ -113,6 +114,12 @@ namespace WebApiUpload.Controllers
 
                 return BadRequest(ex.ToString());
             }
+        }
+        public string RandomString(int length)
+        {
+            const string chars = "A0B1C2D3E4F5G6H7I8J9K0L1M2N3O4P5Q6R7S8T9U0V1W2X3Y4Z50123456789";
+            return new string(Enumerable.Repeat(chars, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
