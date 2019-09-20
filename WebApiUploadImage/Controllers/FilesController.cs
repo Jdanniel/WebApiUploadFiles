@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using WebApiUpload.Models;
+//using WebApiUpload.Models;
+using WebApiUpload.ModelsProduccion;
 
 namespace WebApiUpload.Controllers
 {
@@ -15,7 +16,8 @@ namespace WebApiUpload.Controllers
     [ApiController]
     public class FilesController : ControllerBase
     {
-        private ELAVONTESTContext context_ = new ELAVONTESTContext();
+        //private ELAVONTESTContext context_ = new ELAVONTESTContext();
+        private ELAVONContext context_ = new ELAVONContext();
         private readonly IConfiguration configuracion;
         private readonly string appname;
         private readonly Random random = new Random();
@@ -23,7 +25,7 @@ namespace WebApiUpload.Controllers
         public FilesController(IConfiguration iconfig)
         {
             configuracion = iconfig;
-            appname = configuracion.GetValue<string>("MySettings:appnametest");
+            appname = configuracion.GetValue<string>("MySettings:appname");
         }
 
         [HttpPost]

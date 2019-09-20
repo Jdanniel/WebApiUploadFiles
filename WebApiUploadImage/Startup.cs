@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using WebApiUpload.Models;
 using System.Reflection;
 using System.IO;
+using WebApiUpload.ModelsProduccion;
 
 namespace WebApiUploadImage
 {
@@ -30,6 +31,7 @@ namespace WebApiUploadImage
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ELAVONTESTContext>(options => options.UseSqlServer("ElavonTest"));
+            services.AddDbContext<ELAVONContext>(options => options.UseSqlServer("Elavon"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(o => o.AddPolicy("AllowAll",
                 builder =>
