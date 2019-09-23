@@ -11,10 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using WebApiUpload.Models;
 using System.Reflection;
 using System.IO;
-using WebApiUpload.ModelsProduccion;
+using WebApiUpload.ModelsPro;
 
 namespace WebApiUploadImage
 {
@@ -30,9 +29,7 @@ namespace WebApiUploadImage
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ELAVONTESTContext>(options => options.UseSqlServer("ElavonTest"));
-            services.AddDbContext<ELAVONContext>(options => options.UseSqlServer("Elavon"));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddDbContext<ELAVONTESTContext>(options => options.UseSqlServer("ElavonTest"));
             services.AddCors(o => o.AddPolicy("AllowAll",
                 builder =>
                 {
@@ -42,6 +39,10 @@ namespace WebApiUploadImage
                     .AllowCredentials();
                 }
                 ));
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<ELAVONContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Elavon")));
+
             services.Configure<IISServerOptions>(options =>
             {
                 options.AutomaticAuthentication = false;
@@ -88,8 +89,12 @@ namespace WebApiUploadImage
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json","Upload Files Api");
             });*/
-            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
             app.UseMvc();
         }
     }

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-//using WebApiUpload.Models;
-using WebApiUpload.ModelsProduccion;
+using WebApiUpload.ModelsPro;
 
 namespace WebApiUpload.Controllers
 {
@@ -17,15 +16,16 @@ namespace WebApiUpload.Controllers
     public class FilesController : ControllerBase
     {
         //private ELAVONTESTContext context_ = new ELAVONTESTContext();
-        private ELAVONContext context_ = new ELAVONContext();
+        private readonly ELAVONContext context_ = new ELAVONContext();
         private readonly IConfiguration configuracion;
         private readonly string appname;
         private readonly Random random = new Random();
 
-        public FilesController(IConfiguration iconfig)
+        public FilesController(IConfiguration iconfig, ELAVONContext _context)
         {
             configuracion = iconfig;
             appname = configuracion.GetValue<string>("MySettings:appname");
+            _context = context_;
         }
 
         [HttpPost]
@@ -82,7 +82,7 @@ namespace WebApiUpload.Controllers
                         NombreArchivoUsuario = fi.Name,
                         Ruta = pathToSave,
                         IdTipoArchivo = idextension,
-                        IdUsuarioAlta = 1505,
+                        IdUsuarioAlta = 1456,
                         FechaAlta = DateTime.Now,
                         Status = "ACTIVO"
                     };
