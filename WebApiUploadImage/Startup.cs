@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using System.Reflection;
 using System.IO;
 using WebApiUpload.ModelsPro;
+using WebApiUpload.Models;
 
 namespace WebApiUploadImage
 {
@@ -42,6 +43,7 @@ namespace WebApiUploadImage
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ELAVONContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Elavon")));
+            services.AddDbContext<ELAVONTESTContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ElavonTest")));
 
             services.Configure<IISServerOptions>(options =>
             {
