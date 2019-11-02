@@ -6,10 +6,6 @@ namespace WebApiUpload.ModelsProduccion
 {
     public partial class ELAVONContext : DbContext
     {
-        public ELAVONContext()
-        {
-        }
-
         public ELAVONContext(DbContextOptions<ELAVONContext> options)
             : base(options)
         {

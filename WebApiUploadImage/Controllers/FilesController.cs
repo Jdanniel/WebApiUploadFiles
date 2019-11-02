@@ -16,16 +16,16 @@ namespace WebApiUpload.Controllers
     public class FilesController : ControllerBase
     {
         //private ELAVONTESTContext context_ = new ELAVONTESTContext();
-        private readonly ELAVONTESTContext context_ = new ELAVONTESTContext();
+        private readonly ELAVONTESTContext context_;
         private readonly IConfiguration configuracion;
         private readonly string appname;
         private readonly Random random = new Random();
 
-        public FilesController(IConfiguration iconfig, ELAVONTESTContext _context)
+        public FilesController(IConfiguration iconfig, ELAVONTESTContext context)
         {
             configuracion = iconfig;
-            appname = configuracion.GetValue<string>("MySettings:appname");
-            _context = context_;
+            appname = configuracion.GetValue<string>("MySettings:appnametest");
+            this.context_ = context;
         }
 
         [HttpPost]

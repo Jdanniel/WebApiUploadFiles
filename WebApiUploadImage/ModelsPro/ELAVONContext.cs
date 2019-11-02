@@ -6,9 +6,6 @@ namespace WebApiUpload.ModelsPro
 {
     public partial class ELAVONContext : DbContext
     {
-        public ELAVONContext()
-        {
-        }
 
         public ELAVONContext(DbContextOptions<ELAVONContext> options)
             : base(options)
@@ -839,15 +836,6 @@ namespace WebApiUpload.ModelsPro
         // Unable to generate entity type for table 'dbo.TEMP_NEGOCIOS_BANAMEX'. Please see the warning messages.
         // Unable to generate entity type for table 'dbo.TABLA_PRUEBA_PASO'. Please see the warning messages.
         // Unable to generate entity type for table 'dbo.TEMP_REPORTE_INVENTARIOS_BANAMEX_TNM_FECHA'. Please see the warning messages.
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=192.168.100.56;Persist Security Info=True;connect timeout=400000;Database=ELAVON;User Id=sa;Password=b4ckl45h;");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
