@@ -30,7 +30,7 @@ namespace WebApiUpload.Controllers
 
         [HttpPost]
         [Route("ODT")]
-        public async Task<IActionResult> PostOdt(List<IFormFile> archivos, [FromForm] string noar)
+        public async Task<IActionResult> PostOdt(List<IFormFile> archivos, [FromForm] string noar, [FromForm] int idUsuario)
         {
             if (archivos == null || archivos.Count == 0) return BadRequest("Favor de ingresar los archivos");
             if (noar == null || noar == "") return BadRequest("Favor de ingresar el no de ar");
@@ -82,7 +82,7 @@ namespace WebApiUpload.Controllers
                         NombreArchivoUsuario = fi.Name,
                         Ruta = pathToSave,
                         IdTipoArchivo = idextension,
-                        IdUsuarioAlta = 1456,
+                        IdUsuarioAlta = idUsuario,
                         FechaAlta = DateTime.Now,
                         Status = "ACTIVO"
                     };
