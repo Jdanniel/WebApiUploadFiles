@@ -117,6 +117,31 @@ namespace WebApiUpload.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("PhotoApp")]
+        public async Task<IActionResult> PostPhotoApp(IFormFile archivos, [FromForm] string noar)
+        {
+            var fotos = HttpContext.Request.Form.Files;
+            if(fotos != null)
+            {
+                BdAuditoriaProcesosInternos auditoria = new BdAuditoriaProcesosInternos()
+                {
+                    Proceso = "CARGA DE ARCHIVOS VIA API",
+                    ErrorNumber = 239305,
+                    ErrorMessage = "Se Agrego archivo",
+                    FecAlta = DateTime.Now
+                };
+                context_.BdAuditoriaProcesosInternos.Add(auditoria);
+                await context_.SaveChangesAsync();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("No llego nada ]:(");
+            }
+        }
+
         public string RandomString(int length)
         {
             const string chars = "A0B1C2D3E4F5G6H7I8J9K0L1M2N3O4P5Q6R7S8T9U0V1W2X3Y4Z50123456789";
