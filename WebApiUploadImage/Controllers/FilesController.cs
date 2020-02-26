@@ -122,7 +122,22 @@ namespace WebApiUpload.Controllers
         [Route("PhotoApp")]
         public async Task<IActionResult> PostPhotoApp(IFormFile archivos, [FromForm] string noar)
         {
-            var fotos = HttpContext.Request.Form.Files;
+            var fotos = HttpContext.Request.Form.Files.Count > 0 ? HttpContext.Request.Form.Files[0] : null;
+
+            if(archivos != null)
+            {
+                BdAuditoriaProcesosInternos auditoria = new BdAuditoriaProcesosInternos()
+                {
+                    Proceso = "CARGA DE ARCHIVOS VIA API",
+                    ErrorNumber = 239305,
+                    ErrorMessage = "Se Agrego archivo " + archivos.FileName,
+                    FecAlta = DateTime.Now
+                };
+                context_.BdAuditoriaProcesosInternos.Add(auditoria);
+                await context_.SaveChangesAsync();
+                return Ok();
+            }
+
             if(fotos != null)
             {
                 BdAuditoriaProcesosInternos auditoria = new BdAuditoriaProcesosInternos()
