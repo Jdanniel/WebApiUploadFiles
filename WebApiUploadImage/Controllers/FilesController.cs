@@ -118,42 +118,95 @@ namespace WebApiUpload.Controllers
             }
         }
 
+
         [HttpPost]
-        [Route("PhotoApp")]
-        public async Task<IActionResult> PostPhotoApp(IFormFile archivos, [FromForm] string noar)
+        [Route("photosAplicacion")]
+        public async Task<IActionResult> photosAplicacion(List<IFormFile> archivos, [FromForm] string noar, [FromForm] int idUsuario)
         {
-            var fotos = HttpContext.Request.Form.Files.Count > 0 ? HttpContext.Request.Form.Files[0] : null;
+            if (archivos == null || archivos.Count == 0) return BadRequest("Favor de ingresar los archivos");
+            if (noar == null || noar == "") return BadRequest("Favor de ingresar el no de ar");
+            var idar = (context_.BdAr.Where(n => n.NoAr == noar).Select(i => i.IdAr)).SingleOrDefault();
+            if (idar == 0) return BadRequest("El ar no existe");
 
-            if(archivos != null)
+            string dia = DateTime.Now.Day.ToString();
+            int mes = DateTime.Now.Month;
+            string anno = DateTime.Now.Year.ToString();
+            string mesm = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mes).ToUpper();
+
+            var desccliente = (context_.CClientes.Where(i => i.IdCliente == 4).Select(d => d.DescCliente)).SingleOrDefault().Replace(" ", "_");
+
+            try
+            {
+                foreach (IFormFile archivo in archivos)
+                {
+                    FileInfo fi = new FileInfo(archivo.FileName);
+
+                    string newName = "_" + dia + mesm + anno + RandomString(6) + "_" + idar + fi.Extension;
+
+                    if (!Directory.Exists("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno))
+                    {
+                        Directory.CreateDirectory("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno);
+                    }
+
+                    if (!Directory.Exists("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno + "//" + desccliente))
+                    {
+                        Directory.CreateDirectory("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno + "//" + desccliente);
+                    }
+
+                    if (!Directory.Exists("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno + "//" + desccliente + "//" + mesm))
+                    {
+                        Directory.CreateDirectory("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno + "//" + desccliente + "//" + mesm);
+                    }
+
+                    var path = Path.Combine("C://inetpub//wwwroot//" + appname + "//DOCS/BITACORA_AR//UPLOADER//ARCHIVOS//" + anno + "//" + desccliente + "//" + mesm, newName);
+                    var pathToSave = @"/UPLOADER/ARCHIVOS/" + anno + "/" + desccliente + "/" + mesm;
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await archivo.CopyToAsync(stream);
+                    }
+
+                    var idextension = (context_.CTipoArchivo.Where(x => x.Extension == fi.Extension.Replace(".", ""))).Select(x => x.IdTipoArchivo).SingleOrDefault();
+                    BdArArchivosVarios varios = new BdArArchivosVarios()
+                    {
+                        IdAr = idar,
+                        NombreArchivoSistema = newName,
+                        NombreArchivoUsuario = fi.Name,
+                        Ruta = pathToSave,
+                        IdTipoArchivo = idextension,
+                        IdUsuarioAlta = idUsuario,
+                        FechaAlta = DateTime.Now,
+                        Status = "ACTIVO"
+                    };
+                    context_.BdArArchivosVarios.Add(varios);
+                    await context_.SaveChangesAsync();
+
+                    BdAuditoriaProcesosInternos auditoria = new BdAuditoriaProcesosInternos()
+                    {
+                        Proceso = "CARGA DE ARCHIVOS VIA API",
+                        ErrorNumber = idar,
+                        ErrorMessage = "Se cargo correctamente el archivo " + newName + " para la ODT " + noar,
+                        FecAlta = DateTime.Now
+                    };
+                    context_.BdAuditoriaProcesosInternos.Add(auditoria);
+                    await context_.SaveChangesAsync();
+                }
+                var total = context_.BdArArchivosVarios.Where(x => x.IdAr == idar).Count();
+                return Ok(total);
+            }
+            catch (Exception ex)
             {
                 BdAuditoriaProcesosInternos auditoria = new BdAuditoriaProcesosInternos()
                 {
                     Proceso = "CARGA DE ARCHIVOS VIA API",
-                    ErrorNumber = 239305,
-                    ErrorMessage = "Se Agrego archivo " + archivos.FileName,
+                    ErrorNumber = idar,
+                    ErrorMessage = ex.ToString() + "// Ocurrio un error al cargar un archivo" + noar,
                     FecAlta = DateTime.Now
                 };
                 context_.BdAuditoriaProcesosInternos.Add(auditoria);
                 await context_.SaveChangesAsync();
-                return Ok();
-            }
 
-            if(fotos != null)
-            {
-                BdAuditoriaProcesosInternos auditoria = new BdAuditoriaProcesosInternos()
-                {
-                    Proceso = "CARGA DE ARCHIVOS VIA API",
-                    ErrorNumber = 239305,
-                    ErrorMessage = "Se Agrego archivo",
-                    FecAlta = DateTime.Now
-                };
-                context_.BdAuditoriaProcesosInternos.Add(auditoria);
-                await context_.SaveChangesAsync();
-                return Ok();
-            }
-            else
-            {
-                return BadRequest("No llego nada ]:(");
+                return BadRequest(ex.ToString());
             }
         }
 
