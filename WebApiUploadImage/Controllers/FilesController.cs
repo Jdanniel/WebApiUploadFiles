@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using WebApiUpload.Models;
+using WebApiUpload.ModelsPro;
 
 namespace WebApiUpload.Controllers
 {
@@ -16,21 +16,21 @@ namespace WebApiUpload.Controllers
     public class FilesController : ControllerBase
     {
         //private ELAVONTESTContext context_ = new ELAVONTESTContext();
-        private readonly ELAVONTESTContext context_;
+        private readonly ELAVONContext context_;
         private readonly IConfiguration configuracion;
         private readonly string appname;
         private readonly Random random = new Random();
 
-        public FilesController(IConfiguration iconfig, ELAVONTESTContext context)
+        public FilesController(IConfiguration iconfig, ELAVONContext context)
         {
             configuracion = iconfig;
-            appname = configuracion.GetValue<string>("MySettings:appnametest");
+            appname = configuracion.GetValue<string>("MySettings:appname");
             this.context_ = context;
         }
 
         [HttpPost]
         [Route("ODT")]
-        public async Task<IActionResult> PostOdt(List<IFormFile> archivos, [FromForm] string noar, [FromForm] int idUsuario)
+        public async Task<IActionResult> PostOdt(List<IFormFile> archivos, [FromForm] string noar)
         {
             if (archivos == null || archivos.Count == 0) return BadRequest("Favor de ingresar los archivos");
             if (noar == null || noar == "") return BadRequest("Favor de ingresar el no de ar");
@@ -82,7 +82,7 @@ namespace WebApiUpload.Controllers
                         NombreArchivoUsuario = fi.Name,
                         Ruta = pathToSave,
                         IdTipoArchivo = idextension,
-                        IdUsuarioAlta = idUsuario,
+                        IdUsuarioAlta = 1456,
                         FechaAlta = DateTime.Now,
                         Status = "ACTIVO"
                     };
