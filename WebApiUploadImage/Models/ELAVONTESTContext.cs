@@ -6,6 +6,10 @@ namespace WebApiUpload.Models
 {
     public partial class ELAVONTESTContext : DbContext
     {
+        public ELAVONTESTContext()
+        {
+        }
+
         public ELAVONTESTContext(DbContextOptions<ELAVONTESTContext> options)
             : base(options)
         {
