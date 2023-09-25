@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
-{
-    public partial class BdArViatico
-    {
-        public int IdArViatico { get; set; }
-        public int IdAr { get; set; }
-        public int IdViatico { get; set; }
-        public decimal Costo { get; set; }
-        public int? IdUsuarioAlta { get; set; }
-        public DateTime? FecAlta { get; set; }
+namespace WebApiUpload.Models;
 
-        public virtual CViaticos IdViaticoNavigation { get; set; }
-    }
+public partial class BdArViatico
+{
+    public int IdArViatico { get; set; }
+
+    public int IdAr { get; set; }
+
+    public int IdViatico { get; set; }
+
+    public decimal Costo { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public virtual CViatico IdViaticoNavigation { get; set; }
 }

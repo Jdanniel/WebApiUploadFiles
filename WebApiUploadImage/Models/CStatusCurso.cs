@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusCurso
 {
-    public partial class CStatusCurso
-    {
-        public int IdStatusCurso { get; set; }
-        public string StatusCurso { get; set; }
-        public int? IdUsuarioAlta { get; set; }
-        public DateTime? FecAlta { get; set; }
-        public string Status { get; set; }
-    }
+    public int IdStatusCurso { get; set; }
+
+    public string StatusCurso { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public string Status { get; set; }
 }

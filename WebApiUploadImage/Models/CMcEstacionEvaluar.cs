@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CMcEstacionEvaluar
 {
-    public partial class CMcEstacionEvaluar
-    {
-        public int IdEstacionEvaluar { get; set; }
-        public string DescripcionEstacion { get; set; }
-    }
+    public int IdEstacionEvaluar { get; set; }
+
+    public string DescripcionEstacion { get; set; }
 }

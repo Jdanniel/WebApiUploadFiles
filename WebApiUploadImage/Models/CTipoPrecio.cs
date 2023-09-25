@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CTipoPrecio
 {
-    public partial class CTipoPrecio
-    {
-        public CTipoPrecio()
-        {
-            CServicios = new HashSet<CServicios>();
-        }
+    public int IdTipoPrecio { get; set; }
 
-        public int IdTipoPrecio { get; set; }
-        public string DescTipoPrecio { get; set; }
-        public string Status { get; set; }
+    public string DescTipoPrecio { get; set; }
 
-        public virtual ICollection<CServicios> CServicios { get; set; }
-    }
+    public string Status { get; set; }
+
+    public virtual ICollection<CServicio> CServicios { get; set; } = new List<CServicio>();
 }

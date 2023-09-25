@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CTiempoMedicion
 {
-    public partial class CTiempoMedicion
-    {
-        public CTiempoMedicion()
-        {
-            BdReglasStatusAr = new HashSet<BdReglasStatusAr>();
-        }
+    public int IdTiempoMedicion { get; set; }
 
-        public int IdTiempoMedicion { get; set; }
-        public string DescTiempoMedicion { get; set; }
-        public string Descripcion { get; set; }
-        public string Status { get; set; }
+    public string DescTiempoMedicion { get; set; }
 
-        public virtual ICollection<BdReglasStatusAr> BdReglasStatusAr { get; set; }
-    }
+    public string Descripcion { get; set; }
+
+    public string Status { get; set; }
+
+    public virtual ICollection<BdReglasStatusAr> BdReglasStatusArs { get; set; } = new List<BdReglasStatusAr>();
 }

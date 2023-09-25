@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CTipoCobro
 {
-    public partial class CTipoCobro
-    {
-        public CTipoCobro()
-        {
-            BdArVisitas = new HashSet<BdArVisitas>();
-            BdTipoServicioProducto = new HashSet<BdTipoServicioProducto>();
-        }
+    public int IdTipoCobro { get; set; }
 
-        public int IdTipoCobro { get; set; }
-        public string DescTipoCobro { get; set; }
-        public int? IsCobrable { get; set; }
-        public string Status { get; set; }
+    public string DescTipoCobro { get; set; }
 
-        public virtual ICollection<BdArVisitas> BdArVisitas { get; set; }
-        public virtual ICollection<BdTipoServicioProducto> BdTipoServicioProducto { get; set; }
-    }
+    public int? IsCobrable { get; set; }
+
+    public string Status { get; set; }
+
+    public virtual ICollection<BdArVisita> BdArVisita { get; set; } = new List<BdArVisita>();
+
+    public virtual ICollection<BdTipoServicioProducto> BdTipoServicioProductos { get; set; } = new List<BdTipoServicioProducto>();
 }

@@ -12,17 +12,23 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/files/ODT_FILES",
+      "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "storageKeyId": "AKIA2YRYOVRI7MJZVYWQ",
+        "storageSecret": "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",
+        "AwsBucketName": "getnet-mf"
       }
     },
     "WebApiUploadImage": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "storageKeyId": "AKIA2YRYOVRI7MJZVYWQ",
+        "storageSecret": "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",
+        "AwsBucketName": "getnet-mf"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }

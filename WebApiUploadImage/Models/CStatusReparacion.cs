@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusReparacion
 {
-    public partial class CStatusReparacion
-    {
-        public int IdStatusReparacion { get; set; }
-        public string DescStatusReparacion { get; set; }
-        public string Status { get; set; }
-    }
+    public int IdStatusReparacion { get; set; }
+
+    public string DescStatusReparacion { get; set; }
+
+    public string Status { get; set; }
 }

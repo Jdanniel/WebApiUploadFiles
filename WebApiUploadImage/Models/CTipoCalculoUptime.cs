@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CTipoCalculoUptime
 {
-    public partial class CTipoCalculoUptime
-    {
-        public CTipoCalculoUptime()
-        {
-            CClientes = new HashSet<CClientes>();
-        }
+    public int IdTipoCalculoUptime { get; set; }
 
-        public int IdTipoCalculoUptime { get; set; }
-        public string DescTipoCalculoUptime { get; set; }
-        public string Descripcion { get; set; }
-        public string Status { get; set; }
+    public string DescTipoCalculoUptime { get; set; }
 
-        public virtual ICollection<CClientes> CClientes { get; set; }
-    }
+    public string Descripcion { get; set; }
+
+    public string Status { get; set; }
+
+    public virtual ICollection<CCliente> CClientes { get; set; } = new List<CCliente>();
 }

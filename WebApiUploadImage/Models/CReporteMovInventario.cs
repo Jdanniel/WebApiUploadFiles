@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CReporteMovInventario
 {
-    public partial class CReporteMovInventario
-    {
-        public CReporteMovInventario()
-        {
-            BdReporteMovInventario = new HashSet<BdReporteMovInventario>();
-        }
+    public int IdReporteMovInventario { get; set; }
 
-        public int IdReporteMovInventario { get; set; }
-        public DateTime? FecIni { get; set; }
-        public DateTime? FecFin { get; set; }
-        public string Status { get; set; }
+    public DateTime? FecIni { get; set; }
 
-        public virtual ICollection<BdReporteMovInventario> BdReporteMovInventario { get; set; }
-    }
+    public DateTime? FecFin { get; set; }
+
+    public string Status { get; set; }
+
+    public virtual ICollection<BdReporteMovInventario> BdReporteMovInventarios { get; set; } = new List<BdReporteMovInventario>();
 }

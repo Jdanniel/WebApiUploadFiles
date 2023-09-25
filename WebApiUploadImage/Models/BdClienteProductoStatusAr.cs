@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdClienteProductoStatusAr
 {
-    public partial class BdClienteProductoStatusAr
-    {
-        public BdClienteProductoStatusAr()
-        {
-            BdReglasStatusAr = new HashSet<BdReglasStatusAr>();
-        }
+    public int IdClienteProductoStatusAr { get; set; }
 
-        public int IdClienteProductoStatusAr { get; set; }
-        public int IdCliente { get; set; }
-        public int IdProductoStatusAr { get; set; }
-        public DateTime FecAlta { get; set; }
-        public int IdUsuarioAlta { get; set; }
+    public int IdCliente { get; set; }
 
-        public virtual BdProductoStatusAr IdProductoStatusArNavigation { get; set; }
-        public virtual ICollection<BdReglasStatusAr> BdReglasStatusAr { get; set; }
-    }
+    public int IdProductoStatusAr { get; set; }
+
+    public DateTime FecAlta { get; set; }
+
+    public int IdUsuarioAlta { get; set; }
+
+    public virtual ICollection<BdReglasStatusAr> BdReglasStatusArs { get; set; } = new List<BdReglasStatusAr>();
+
+    public virtual BdProductoStatusAr IdProductoStatusArNavigation { get; set; }
 }

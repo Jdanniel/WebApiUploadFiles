@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdPestanasBitacoraAr
 {
-    public partial class BdPestanasBitacoraAr
-    {
-        public int IdPestanasBitacoraAr { get; set; }
-        public string NombrePestana { get; set; }
-        public string Status { get; set; }
-    }
+    public int IdPestanasBitacoraAr { get; set; }
+
+    public string NombrePestana { get; set; }
+
+    public string Status { get; set; }
 }

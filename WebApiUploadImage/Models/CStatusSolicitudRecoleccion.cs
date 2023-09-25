@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusSolicitudRecoleccion
 {
-    public partial class CStatusSolicitudRecoleccion
-    {
-        public CStatusSolicitudRecoleccion()
-        {
-            BdBitacoraSolicitudRecoleccionIdStatusSolicitudRecoleccionFinNavigation = new HashSet<BdBitacoraSolicitudRecoleccion>();
-            BdBitacoraSolicitudRecoleccionIdStatusSolicitudRecoleccionIniNavigation = new HashSet<BdBitacoraSolicitudRecoleccion>();
-            BdSolicitudRecoleccion = new HashSet<BdSolicitudRecoleccion>();
-        }
+    public int IdStatusSolicitudRecoleccion { get; set; }
 
-        public int IdStatusSolicitudRecoleccion { get; set; }
-        public string DescStatusSolicitudRecoleccion { get; set; }
-        public string Status { get; set; }
+    public string DescStatusSolicitudRecoleccion { get; set; }
 
-        public virtual ICollection<BdBitacoraSolicitudRecoleccion> BdBitacoraSolicitudRecoleccionIdStatusSolicitudRecoleccionFinNavigation { get; set; }
-        public virtual ICollection<BdBitacoraSolicitudRecoleccion> BdBitacoraSolicitudRecoleccionIdStatusSolicitudRecoleccionIniNavigation { get; set; }
-        public virtual ICollection<BdSolicitudRecoleccion> BdSolicitudRecoleccion { get; set; }
-    }
+    public string Status { get; set; }
+
+    public virtual ICollection<BdBitacoraSolicitudRecoleccion> BdBitacoraSolicitudRecoleccionIdStatusSolicitudRecoleccionFinNavigations { get; set; } = new List<BdBitacoraSolicitudRecoleccion>();
+
+    public virtual ICollection<BdBitacoraSolicitudRecoleccion> BdBitacoraSolicitudRecoleccionIdStatusSolicitudRecoleccionIniNavigations { get; set; } = new List<BdBitacoraSolicitudRecoleccion>();
+
+    public virtual ICollection<BdSolicitudRecoleccion> BdSolicitudRecoleccions { get; set; } = new List<BdSolicitudRecoleccion>();
 }

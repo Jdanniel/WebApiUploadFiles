@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
-{
-    public partial class BdClaveEstado
-    {
-        public int IdClaveEstado { get; set; }
-        public int? IdEstado { get; set; }
-        public string Clave { get; set; }
-        public DateTime? FecAlta { get; set; }
-        public int? IdUsuarioAlta { get; set; }
+namespace WebApiUpload.Models;
 
-        public virtual SepomexEstados IdEstadoNavigation { get; set; }
-    }
+public partial class BdClaveEstado
+{
+    public int IdClaveEstado { get; set; }
+
+    public int? IdEstado { get; set; }
+
+    public string Clave { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public virtual SepomexEstado IdEstadoNavigation { get; set; }
 }

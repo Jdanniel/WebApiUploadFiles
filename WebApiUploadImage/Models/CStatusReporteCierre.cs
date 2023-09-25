@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusReporteCierre
 {
-    public partial class CStatusReporteCierre
-    {
-        public CStatusReporteCierre()
-        {
-            BdReporteCierre = new HashSet<BdReporteCierre>();
-        }
+    public int IdStatusReporteCierre { get; set; }
 
-        public int IdStatusReporteCierre { get; set; }
-        public string DescStatusReporteCierre { get; set; }
-        public string Status { get; set; }
+    public string DescStatusReporteCierre { get; set; }
 
-        public virtual ICollection<BdReporteCierre> BdReporteCierre { get; set; }
-    }
+    public string Status { get; set; }
+
+    public virtual ICollection<BdReporteCierre> BdReporteCierres { get; set; } = new List<BdReporteCierre>();
 }

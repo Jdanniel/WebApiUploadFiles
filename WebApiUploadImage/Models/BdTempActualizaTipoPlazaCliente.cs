@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdTempActualizaTipoPlazaCliente
 {
-    public partial class BdTempActualizaTipoPlazaCliente
-    {
-        public int Id { get; set; }
-        public int? IdServicio { get; set; }
-        public int? IdSegmento { get; set; }
-        public int? IdTipoPlaza { get; set; }
-        public int? IdTipoPlazaCliente { get; set; }
-    }
+    public int Id { get; set; }
+
+    public int? IdServicio { get; set; }
+
+    public int? IdSegmento { get; set; }
+
+    public int? IdTipoPlaza { get; set; }
+
+    public int? IdTipoPlazaCliente { get; set; }
 }

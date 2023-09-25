@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdSolicitudAlmacenComentario
 {
-    public partial class BdSolicitudAlmacenComentario
-    {
-        public int IdComentarioSolicitudAlmacen { get; set; }
-        public int? IdSolicitudAlmacen { get; set; }
-        public string DescComentarioSolicitudAlmacen { get; set; }
-        public int? IdUsuarioAlta { get; set; }
-        public DateTime? FecAlta { get; set; }
-        public int? IdStatusSolicitudAlmacen { get; set; }
-    }
+    public int IdComentarioSolicitudAlmacen { get; set; }
+
+    public int? IdSolicitudAlmacen { get; set; }
+
+    public string DescComentarioSolicitudAlmacen { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public int? IdStatusSolicitudAlmacen { get; set; }
 }

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CDocsTir
 {
-    public partial class CDocsTir
-    {
-        public int IdDocsTir { get; set; }
-        public string DescDoc { get; set; }
-        public string DocTir { get; set; }
-        public string Status { get; set; }
-    }
+    public int IdDocsTir { get; set; }
+
+    public string DescDoc { get; set; }
+
+    public string DocTir { get; set; }
+
+    public string Status { get; set; }
 }

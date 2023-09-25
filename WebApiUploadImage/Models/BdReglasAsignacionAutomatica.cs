@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdReglasAsignacionAutomatica
 {
-    public partial class BdReglasAsignacionAutomatica
-    {
-        public int IdReglaAsignacionAutomatica { get; set; }
-        public int? IdProducto { get; set; }
-        public int? IdCliente { get; set; }
-        public int? IdRegion { get; set; }
-        public int? IdZona { get; set; }
-        public int? IdTecnico { get; set; }
-    }
+    public int IdReglaAsignacionAutomatica { get; set; }
+
+    public int? IdProducto { get; set; }
+
+    public int? IdCliente { get; set; }
+
+    public int? IdRegion { get; set; }
+
+    public int? IdZona { get; set; }
+
+    public int? IdTecnico { get; set; }
 }

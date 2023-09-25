@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdRelacionFacturaEnvio
 {
-    public partial class BdRelacionFacturaEnvio
-    {
-        public int IdRelacionFacturaEnvio { get; set; }
-        public int? IdEnvio { get; set; }
-        public int? IsProcesada { get; set; }
-        public DateTime? FecAlta { get; set; }
-        public int? IdUsuario { get; set; }
-        public string NoFactura { get; set; }
-    }
+    public int IdRelacionFacturaEnvio { get; set; }
+
+    public int? IdEnvio { get; set; }
+
+    public int? IsProcesada { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public int? IdUsuario { get; set; }
+
+    public string NoFactura { get; set; }
 }

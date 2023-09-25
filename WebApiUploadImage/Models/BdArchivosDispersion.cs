@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdArchivosDispersion
 {
-    public partial class BdArchivosDispersion
-    {
-        public BdArchivosDispersion()
-        {
-            BdArchivoDispersionSolicitudViaticos = new HashSet<BdArchivoDispersionSolicitudViaticos>();
-        }
+    public int IdArchivoDispersion { get; set; }
 
-        public int IdArchivoDispersion { get; set; }
-        public string Carpeta { get; set; }
-        public string NombreArchivoDispersion { get; set; }
-        public int IdUsuarioAlta { get; set; }
-        public DateTime FecAlta { get; set; }
-        public string Status { get; set; }
-        public int IdBanco { get; set; }
+    public string Carpeta { get; set; }
 
-        public virtual ICollection<BdArchivoDispersionSolicitudViaticos> BdArchivoDispersionSolicitudViaticos { get; set; }
-    }
+    public string NombreArchivoDispersion { get; set; }
+
+    public int IdUsuarioAlta { get; set; }
+
+    public DateTime FecAlta { get; set; }
+
+    public string Status { get; set; }
+
+    public int IdBanco { get; set; }
+
+    public virtual ICollection<BdArchivoDispersionSolicitudViatico> BdArchivoDispersionSolicitudViaticos { get; set; } = new List<BdArchivoDispersionSolicitudViatico>();
 }

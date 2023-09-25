@@ -1,28 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusUnidad
 {
-    public partial class CStatusUnidad
-    {
-        public CStatusUnidad()
-        {
-            BdBitacoraUnidadIdStatusUnidadFinNavigation = new HashSet<BdBitacoraUnidad>();
-            BdBitacoraUnidadIdStatusUnidadIniNavigation = new HashSet<BdBitacoraUnidad>();
-            BdReingresoUnidadIdStatusUnidadAnteriorNavigation = new HashSet<BdReingresoUnidad>();
-            BdReingresoUnidadIdStatusUnidadReingresoNavigation = new HashSet<BdReingresoUnidad>();
-        }
+    public int IdStatusUnidad { get; set; }
 
-        public int IdStatusUnidad { get; set; }
-        public string DescStatusUnidad { get; set; }
-        public string Status { get; set; }
-        public int? IsLab { get; set; }
-        public string AssignmentNo { get; set; }
-        public string AssignmentNoDanada { get; set; }
+    public string DescStatusUnidad { get; set; }
 
-        public virtual ICollection<BdBitacoraUnidad> BdBitacoraUnidadIdStatusUnidadFinNavigation { get; set; }
-        public virtual ICollection<BdBitacoraUnidad> BdBitacoraUnidadIdStatusUnidadIniNavigation { get; set; }
-        public virtual ICollection<BdReingresoUnidad> BdReingresoUnidadIdStatusUnidadAnteriorNavigation { get; set; }
-        public virtual ICollection<BdReingresoUnidad> BdReingresoUnidadIdStatusUnidadReingresoNavigation { get; set; }
-    }
+    public string Status { get; set; }
+
+    public int? IsLab { get; set; }
+
+    public string AssignmentNo { get; set; }
+
+    public string AssignmentNoDanada { get; set; }
+
+    public virtual ICollection<BdBitacoraUnidad> BdBitacoraUnidadIdStatusUnidadFinNavigations { get; set; } = new List<BdBitacoraUnidad>();
+
+    public virtual ICollection<BdBitacoraUnidad> BdBitacoraUnidadIdStatusUnidadIniNavigations { get; set; } = new List<BdBitacoraUnidad>();
+
+    public virtual ICollection<BdReingresoUnidad> BdReingresoUnidadIdStatusUnidadAnteriorNavigations { get; set; } = new List<BdReingresoUnidad>();
+
+    public virtual ICollection<BdReingresoUnidad> BdReingresoUnidadIdStatusUnidadReingresoNavigations { get; set; } = new List<BdReingresoUnidad>();
 }

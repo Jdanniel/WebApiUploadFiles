@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CUrgenciaSolicitudAlmacen
 {
-    public partial class CUrgenciaSolicitudAlmacen
-    {
-        public CUrgenciaSolicitudAlmacen()
-        {
-            BdSolicitudesAlmacen = new HashSet<BdSolicitudesAlmacen>();
-            BdSolicitudesAlmacenOld = new HashSet<BdSolicitudesAlmacenOld>();
-        }
+    public int IdUrgenciaSolicitudAlmacen { get; set; }
 
-        public int IdUrgenciaSolicitudAlmacen { get; set; }
-        public string DescUrgenciaSolicitudAlmacen { get; set; }
-        public string Status { get; set; }
+    public string DescUrgenciaSolicitudAlmacen { get; set; }
 
-        public virtual ICollection<BdSolicitudesAlmacen> BdSolicitudesAlmacen { get; set; }
-        public virtual ICollection<BdSolicitudesAlmacenOld> BdSolicitudesAlmacenOld { get; set; }
-    }
+    public string Status { get; set; }
+
+    public virtual ICollection<BdSolicitudesAlmacenOld> BdSolicitudesAlmacenOlds { get; set; } = new List<BdSolicitudesAlmacenOld>();
+
+    public virtual ICollection<BdSolicitudesAlmacen> BdSolicitudesAlmacens { get; set; } = new List<BdSolicitudesAlmacen>();
 }

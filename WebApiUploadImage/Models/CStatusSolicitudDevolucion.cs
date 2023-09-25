@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusSolicitudDevolucion
 {
-    public partial class CStatusSolicitudDevolucion
-    {
-        public CStatusSolicitudDevolucion()
-        {
-            BdBitacoraSolicitudDevolucionIdStatusSolicitudDevolucionFinNavigation = new HashSet<BdBitacoraSolicitudDevolucion>();
-            BdBitacoraSolicitudDevolucionIdStatusSolicitudDevolucionIniNavigation = new HashSet<BdBitacoraSolicitudDevolucion>();
-        }
+    public int IdStatusSolicitudDevolucion { get; set; }
 
-        public int IdStatusSolicitudDevolucion { get; set; }
-        public string DescStatusSolicitudDevolucion { get; set; }
-        public string Status { get; set; }
+    public string DescStatusSolicitudDevolucion { get; set; }
 
-        public virtual ICollection<BdBitacoraSolicitudDevolucion> BdBitacoraSolicitudDevolucionIdStatusSolicitudDevolucionFinNavigation { get; set; }
-        public virtual ICollection<BdBitacoraSolicitudDevolucion> BdBitacoraSolicitudDevolucionIdStatusSolicitudDevolucionIniNavigation { get; set; }
-    }
+    public string Status { get; set; }
+
+    public virtual ICollection<BdBitacoraSolicitudDevolucion> BdBitacoraSolicitudDevolucionIdStatusSolicitudDevolucionFinNavigations { get; set; } = new List<BdBitacoraSolicitudDevolucion>();
+
+    public virtual ICollection<BdBitacoraSolicitudDevolucion> BdBitacoraSolicitudDevolucionIdStatusSolicitudDevolucionIniNavigations { get; set; } = new List<BdBitacoraSolicitudDevolucion>();
 }

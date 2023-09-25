@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
-{
-    public partial class BdServicioCausa
-    {
-        public int IdServicioCausa { get; set; }
-        public int IdServicio { get; set; }
-        public int IdCausa { get; set; }
-        public int? IdUsuarioAlta { get; set; }
-        public DateTime? FecAlta { get; set; }
+namespace WebApiUpload.Models;
 
-        public virtual CCausas IdCausaNavigation { get; set; }
-        public virtual CServicios IdServicioNavigation { get; set; }
-    }
+public partial class BdServicioCausa
+{
+    public int IdServicioCausa { get; set; }
+
+    public int IdServicio { get; set; }
+
+    public int IdCausa { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public virtual CCausa IdCausaNavigation { get; set; }
+
+    public virtual CServicio IdServicioNavigation { get; set; }
 }

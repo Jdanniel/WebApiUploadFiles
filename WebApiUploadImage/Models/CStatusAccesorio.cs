@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusAccesorio
 {
-    public partial class CStatusAccesorio
-    {
-        public CStatusAccesorio()
-        {
-            BdUnidadAccesorio = new HashSet<BdUnidadAccesorio>();
-        }
+    public int IdStatusAccesorio { get; set; }
 
-        public int IdStatusAccesorio { get; set; }
-        public string DescStatusAccesorio { get; set; }
-        public string Status { get; set; }
+    public string DescStatusAccesorio { get; set; }
 
-        public virtual ICollection<BdUnidadAccesorio> BdUnidadAccesorio { get; set; }
-    }
+    public string Status { get; set; }
+
+    public virtual ICollection<BdUnidadAccesorio> BdUnidadAccesorios { get; set; } = new List<BdUnidadAccesorio>();
 }

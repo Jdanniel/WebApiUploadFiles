@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CVistasEscalamiento
 {
-    public partial class CVistasEscalamiento
-    {
-        public CVistasEscalamiento()
-        {
-            BdUsuarioVistaEscalamiento = new HashSet<BdUsuarioVistaEscalamiento>();
-            BdVistaEscalamientoStatusAr = new HashSet<BdVistaEscalamientoStatusAr>();
-        }
+    public int IdVistaEscalamiento { get; set; }
 
-        public int IdVistaEscalamiento { get; set; }
-        public string DescVistaEscalamiento { get; set; }
-        public string Descripcion { get; set; }
-        public string Status { get; set; }
-        public int? IdUsuarioAlta { get; set; }
-        public DateTime? FecAlta { get; set; }
+    public string DescVistaEscalamiento { get; set; }
 
-        public virtual ICollection<BdUsuarioVistaEscalamiento> BdUsuarioVistaEscalamiento { get; set; }
-        public virtual ICollection<BdVistaEscalamientoStatusAr> BdVistaEscalamientoStatusAr { get; set; }
-    }
+    public string Descripcion { get; set; }
+
+    public string Status { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public virtual ICollection<BdUsuarioVistaEscalamiento> BdUsuarioVistaEscalamientos { get; set; } = new List<BdUsuarioVistaEscalamiento>();
+
+    public virtual ICollection<BdVistaEscalamientoStatusAr> BdVistaEscalamientoStatusArs { get; set; } = new List<BdVistaEscalamientoStatusAr>();
 }

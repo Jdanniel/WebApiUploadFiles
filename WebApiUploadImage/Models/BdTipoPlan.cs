@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdTipoPlan
 {
-    public partial class BdTipoPlan
-    {
-        public int IdTipoPlan { get; set; }
-        public string DescTipoPlan { get; set; }
-        public int? IdUsuarioAlta { get; set; }
-        public DateTime? FecAlta { get; set; }
-        public string Status { get; set; }
-    }
+    public int IdTipoPlan { get; set; }
+
+    public string DescTipoPlan { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public string Status { get; set; }
 }

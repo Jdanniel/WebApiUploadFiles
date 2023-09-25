@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdBitacoraNoInsumoAr
 {
-    public partial class BdBitacoraNoInsumoAr
-    {
-        public int IdBitacoraNoInsumoAr { get; set; }
-        public int? IdAr { get; set; }
-        public int? IdInsumo { get; set; }
-        public int? IdTecnico { get; set; }
-        public string Causa { get; set; }
-        public DateTime? FecAlta { get; set; }
-    }
+    public int IdBitacoraNoInsumoAr { get; set; }
+
+    public int? IdAr { get; set; }
+
+    public int? IdInsumo { get; set; }
+
+    public int? IdTecnico { get; set; }
+
+    public string Causa { get; set; }
+
+    public DateTime? FecAlta { get; set; }
 }

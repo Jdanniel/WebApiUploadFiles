@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
-{
-    public partial class BdModeloSustituto
-    {
-        public int Id { get; set; }
-        public int? IdModelo { get; set; }
-        public int? IdModeloSustituto { get; set; }
-        public int? IdSoftware { get; set; }
-        public DateTime? FecAlta { get; set; }
-        public int? IdUsuarioAlta { get; set; }
+namespace WebApiUpload.Models;
 
-        public virtual CModelos IdModeloNavigation { get; set; }
-        public virtual CModelos IdModeloSustitutoNavigation { get; set; }
-        public virtual CSoftware IdSoftwareNavigation { get; set; }
-    }
+public partial class BdModeloSustituto
+{
+    public int Id { get; set; }
+
+    public int? IdModelo { get; set; }
+
+    public int? IdModeloSustituto { get; set; }
+
+    public int? IdSoftware { get; set; }
+
+    public DateTime? FecAlta { get; set; }
+
+    public int? IdUsuarioAlta { get; set; }
+
+    public virtual CModelo IdModeloNavigation { get; set; }
+
+    public virtual CModelo IdModeloSustitutoNavigation { get; set; }
+
+    public virtual CSoftware IdSoftwareNavigation { get; set; }
 }

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class BdBitacoraBorrarUnidad
 {
-    public partial class BdBitacoraBorrarUnidad
-    {
-        public int IdBitacoraBorrarUnidad { get; set; }
-        public int IdUnidad { get; set; }
-        public DateTime? FecBorrado { get; set; }
-        public int IdUsuarioBorrado { get; set; }
-    }
+    public int IdBitacoraBorrarUnidad { get; set; }
+
+    public int IdUnidad { get; set; }
+
+    public DateTime? FecBorrado { get; set; }
+
+    public int IdUsuarioBorrado { get; set; }
 }

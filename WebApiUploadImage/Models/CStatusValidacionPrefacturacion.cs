@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebApiUpload.Models
+namespace WebApiUpload.Models;
+
+public partial class CStatusValidacionPrefacturacion
 {
-    public partial class CStatusValidacionPrefacturacion
-    {
-        public int IdStatusValidacionPrefacturacion { get; set; }
-        public string DescStatusValidacionPrefacturacion { get; set; }
-        public string Status { get; set; }
-        public int? IsAutomatica { get; set; }
-        public int? NextIdStatusAr { get; set; }
-    }
+    public int IdStatusValidacionPrefacturacion { get; set; }
+
+    public string DescStatusValidacionPrefacturacion { get; set; }
+
+    public string Status { get; set; }
+
+    public int? IsAutomatica { get; set; }
+
+    public int? NextIdStatusAr { get; set; }
 }
