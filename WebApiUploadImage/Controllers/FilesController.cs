@@ -213,13 +213,13 @@ namespace WebApiUpload.Controllers
         }
 
         [HttpPost("photosAplicacion")]
-        public async Task<IActionResult> photosAplicacion(IFormFile archivo, [FromForm] string noar, [FromForm] int idUsuario, [FromForm] int EvidenceTypeId)
+        public async Task<IActionResult> photosAplicacion(IFormFile archivos, [FromForm] string noar, [FromForm] int idUsuario, [FromForm] int EvidenceTypeId)
         {
-            if (archivo == null) return BadRequest("Favor de ingresar los archivos");
+            if (archivos == null) return BadRequest("Favor de ingresar los archivos");
             if (noar == null || noar == "") return BadRequest("Favor de ingresar el no de ar");
             BdAr ar = await context_.BdArs.Where(x => x.NoAr == noar).FirstOrDefaultAsync();
             if (ar == null) return BadRequest("El ar no existe");
-            CTipoArchivo tipoArchivo = await context_.CTipoArchivos.Where(x => x.Extension == Path.GetExtension(archivo.FileName).Replace(".","")).FirstOrDefaultAsync();
+            CTipoArchivo tipoArchivo = await context_.CTipoArchivos.Where(x => x.Extension == Path.GetExtension(archivos.FileName).Replace(".","")).FirstOrDefaultAsync();
 
             if(tipoArchivo == null)
             {
@@ -254,15 +254,15 @@ namespace WebApiUpload.Controllers
             string mesm = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mes).ToUpper();
             var desccliente = (context_.CClientes.Where(i => i.IdCliente == 4).Select(d => d.DescCliente)).SingleOrDefault().Replace(" ", "_");
 
-            string pathFile = $@"{year}/{desccliente}/{mesm}/";
+            string pathFile = $@"{desccliente}/{year}/{mesm}/";
 
             try
             {
-                FileInfo fi = new FileInfo(archivo.FileName);
+                FileInfo fi = new FileInfo(archivos.FileName);
 
                 string newName = "_" + dia + mesm + anno + _randomServices.String(6) + "_" + ar.IdAr + fi.Extension;
 
-                await _awsServices.Upload(archivo,pathFile + newName);
+                await _awsServices.Upload(archivos, pathFile + newName);
                 
                 BdArArchivosVario varios = new BdArArchivosVario()
                 {
@@ -273,7 +273,8 @@ namespace WebApiUpload.Controllers
                     IdTipoArchivo = tipoArchivo.IdTipoArchivo,
                     IdUsuarioAlta = idUsuario,
                     FechaAlta = DateTime.Now,
-                    Status = "ACTIVO"
+                    Status = "ACTIVO",
+                    EvidenceTypeId = EvidenceTypeId
                 };
                 context_.BdArArchivosVarios.Add(varios);
                 await context_.SaveChangesAsync();
