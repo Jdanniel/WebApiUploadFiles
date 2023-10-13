@@ -25,7 +25,7 @@ namespace WebApiUpload.Services
         {
             List<string> msgs = new();
 
-            using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("storageKeyId"), Environment.GetEnvironmentVariable("storageSecret"), Amazon.RegionEndpoint.USEast1))
+            using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"), Amazon.RegionEndpoint.USEast1))
             {
                 try
                 {
@@ -64,7 +64,7 @@ namespace WebApiUpload.Services
             {
                 await formFile.CopyToAsync(sm);
 
-                using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("storageKeyId"), Environment.GetEnvironmentVariable("storageSecret"), Amazon.RegionEndpoint.USEast1))
+                using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"), Amazon.RegionEndpoint.USEast1))
                 {
                     try
                     {
