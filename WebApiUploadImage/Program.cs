@@ -40,7 +40,7 @@ builder.Services.Configure<GetnetConfig>(configuration.GetSection("GetnetConfig"
 builder.Services.AddDbContext<GetnetUatContext>(options => options.UseSqlServer(configuration.GetConnectionString("ElavonTest")));
 builder.Services.AddSwaggerGen(doc =>
 {
-    doc.SwaggerDoc("v1", new OpenApiInfo { Title = "Getnet - Proveedores", Version = "v1" });
+    doc.SwaggerDoc("v1", new OpenApiInfo { Title = "Getnet - App - Images", Version = "v1" });
 
     var xmlPath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
     doc.IncludeXmlComments(xmlPath);
@@ -61,7 +61,7 @@ app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     string swaggerJsonBasePath = string.IsNullOrWhiteSpace(options.RoutePrefix) ? "." : "..";
-    options.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "Getnet - Files - App V1");
+    options.SwaggerEndpoint($"{swaggerJsonBasePath}/swagger/v1/swagger.json", "Getnet - App - Images V1");
 });
 
 app.UseRouting();

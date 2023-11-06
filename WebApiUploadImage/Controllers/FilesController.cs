@@ -229,11 +229,11 @@ namespace WebApiUpload.Controllers
             int[] StatusAr = { 6, 7, 8 };
 
             CevidenceType evidenceTypes = await context_.CevidenceTypes.Where(x => x.EvidenceTypeId == EvidenceTypeId).FirstOrDefaultAsync();
-
+            /*
             if (StatusAr.Contains(ar.IdStatusAr.GetValueOrDefault()) && evidenceTypes.EvidenceDesc.Trim().ToUpper() != "OTRO")
             {
                 return BadRequest("El Servicio no esta en el estatus correcto");
-            }
+            }*/
 
             if (evidenceTypes.EvidenceNumber != -1)
             {
