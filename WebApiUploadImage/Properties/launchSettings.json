@@ -15,8 +15,8 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "storageKeyId": "AKIA2YRYOVRI7MJZVYWQ",
-        "storageSecret": "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",
+        "AWS_ACCESS_KEY_ID": "AKIA2YRYOVRI7MJZVYWQ",
+        "AWS_SECRET_ACCESS_KEY": "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",
         "AwsBucketName": "getnet-mf"
       }
     },
@@ -26,8 +26,8 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "storageKeyId": "AKIA2YRYOVRI7MJZVYWQ",
-        "storageSecret": "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",
+        "AWS_ACCESS_KEY_ID": "AKIA2YRYOVRI7MJZVYWQ",
+        "AWS_SECRET_ACCESS_KEY": "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",
         "AwsBucketName": "getnet-mf"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
