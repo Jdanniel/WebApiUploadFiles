@@ -25,13 +25,13 @@ namespace WebApiUpload.Services
         {
             List<string> msgs = new();
 
-            using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"), Amazon.RegionEndpoint.USEast1))
+            using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID_GETNET"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY_GETNET"), Amazon.RegionEndpoint.USEast1))
             {
                 try
                 {
                     var deleteObjectRequest = new DeleteObjectRequest
                     {
-                        BucketName = Environment.GetEnvironmentVariable("AwsBucketName"),
+                        BucketName = Environment.GetEnvironmentVariable("AwsBucketNameGetnet"),
                         Key = $"{_getnetConfig.PathS3}/" + FileName,
                     };
 
@@ -64,13 +64,13 @@ namespace WebApiUpload.Services
             {
                 await formFile.CopyToAsync(sm);
 
-                using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY"), Amazon.RegionEndpoint.USEast1))
+                using (var client = new AmazonS3Client(Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID_GETNET"), Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY_GETNET"), Amazon.RegionEndpoint.USEast1))
                 {
                     try
                     {
                         var putRequest1 = new PutObjectRequest
                         {
-                            BucketName = Environment.GetEnvironmentVariable("AwsBucketName"),
+                            BucketName = Environment.GetEnvironmentVariable("AwsBucketNameGetnet"),
                             Key = $"{_getnetConfig.PathS3}/" + FileName,
                             InputStream = sm
                         };
